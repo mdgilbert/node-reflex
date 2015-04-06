@@ -1,0 +1,6 @@
+localDB.js
+keys/*
+*.log
+.*.swp
+node_modules/*
+

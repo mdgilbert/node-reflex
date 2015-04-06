@@ -1,0 +1,30 @@
+{
+  "name": "node-reflex",
+  "version": "0.0.1",
+  "description": "Backend server API to serve data from the wiki-tools scripts",
+  "author": "Michael Gilbert <mdg@uw.edu>",
+  "keywords": [
+    "reflex",
+    "wikipedia"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdgilbert/node-reflex"
+  },
+  "dependencies": {
+    "body-parser": "1.9.0",
+    "express": "4.9.7",
+    "fs": "0.0.2",
+    "mysql": "2.5.2",
+    "request": "2.45.0",
+    "socket.io": "1.2.0",
+    "url": "0.10.1"
+  },
+  "engines": {
+    "node": ">= 0.10.37"
+  },
+  "bugs": {
+    "url": "https://github.com/mdgilbert/node-reflex/issues"
+  }
+}
+
