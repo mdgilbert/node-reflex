@@ -1,7 +1,7 @@
 # node-reflex
 Node.js server for wiki data cache
 
-
+<pre>
 https:alahele.ischool.uw.edu:8997/api/getEdits
 This is the workhorse, delivering a detailed view of page edits given either a starting user or page (or users or pages).
 
@@ -145,3 +145,5 @@ Arguments:
 Example to get members for WikiProject HCI for the last year:
 
 https:alahele.ischool.uw.edu:8997/api/getProjectMembers?project=WikiProject_Human_Computer_Interaction
+
+</pre>
