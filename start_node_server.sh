@@ -1,1 +1,1 @@
-/usr/bin/forever start -a -l /home/webroot/node-reflex/out_forever.log -o /home/webroot/node-reflex/out_reflex.log -e /home/webroot/node-reflex/out_reflex_err.log /home/webroot/node-reflex/reflex_api.js
+/usr/bin/forever start -a -l /home/mdg/projects/node-reflex/out_forever.log -o /home/mdg/projects/node-reflex/out_reflex.log -e /home/mdg/projects/node-reflex/out_reflex_err.log /home/mdg/projects/node-reflex/reflex_api.js

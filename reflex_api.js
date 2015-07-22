@@ -9,11 +9,8 @@ var express         = require("express"),
 // Setup and cert creation steps from: 
 // http://stackoverflow.com/questions/5998694/how-to-create-an-https-server-in-node-js
 var options = {
-  //key: fs.readFileSync('keys/key.pem'),
-  //cert: fs.readFileSync('keys/cert.pem')
-  key: fs.readFileSync('keys/alahele.ischool.uw.edu-key.pem'),
+  key: fs.readFileSync('keys/alahele.ischool.uw.edu-key.key'),
   cert: fs.readFileSync('keys/alahele.ischool.uw.edu-cert.pem'),
-  passphrase: fs.readFileSync('keys/pass.pem').toString().trim(),
 };
 
 var app = module.exports = express();
@@ -143,6 +140,10 @@ app.get('/api/getProjects', function(req, res, next) {
 app.get('/api/getProjectMembers', function(req, res, next) {
   console.log("Routing /api/getProjectMembers");
   requestHandlers.getProjectMembers(req, res, next);
+});
+app.get('/api/getProjectUserLinks', function(req, res, next) {
+  console.log("Routing /api/getProjectUserLinks");
+  requestHandlers.getProjectUserLinks(req, res, next);
 });
 app.get('/api/getProjectPages', function(req, res, next) {
   console.log("Routing /api/getProjectPages");

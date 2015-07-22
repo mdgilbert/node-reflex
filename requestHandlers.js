@@ -528,6 +528,52 @@ function getActiveProjectPages(req, res, next) {
   });
 }
 
+// For a given project or project id and timeframe, return a list of members.
+// NOTE: This will ultimately aim to replace the getProjectMembers function.
+// Query arguments:
+//   project: a project name (ie, WikiProject_Cats)
+//   pageid: the page id of a project. Can also include multiple page ids, separated by "|", to
+//     specify a set of project pages (ie, ids for WikiProject_Cats and WikiProject_Cats/Members).
+//     This will /only/ return users with links on the ids of the passed in pages, not links on all
+//     project subpages.  If that's the desired behavior pass in the project name.
+//   sd: the start date to query within, of the format YYYYmmdd
+//   ed: the end date to query within, of the format YYYYmmdd
+//     * If neither sd/ed are given, range will be 1 year, ending now
+function getProjectUserLinks(req, res, next) {
+  console.log("Request handler 'getProjectUserLinks' was called");
+  conn.query("USE " + db)
+
+  // Build time query (s and e will be the start and end weeks to search between)
+  var sd = req.query.sd || 0;
+  var ed = req.query.ed || 0;
+  var s = e = 0;
+  var now = new Date();
+  if (sd != 0 && ed != 0) {
+    s = uw_util.convertDateToWikiWeek( sd );
+    e = uw_util.convertDateToWikiWeek( ed );
+  } else {
+    // Default range is 1 year ago to now
+    s = uw_util.convertDateToWikiWeek(
+      String(now.getFullYear()-1) + String(uw_util.pad(now.getMonth()+1,2)) + String(uw_util.pad(now.getDate(), 2))
+    );
+    e = uw_util.convertDateToWikiWeek(
+      String(now.getFullYear()) + String(uw_util.pad(now.getMonth()+1,2)) + String(uw_util.pad(now.getDate(), 2))
+    );
+  }
+
+  // Build the query to fetch project members for the given timeframe
+
+  // Structure the results
+
+  // Return the results
+      res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      });
+      res.end(JSON.stringify({"message": "TEST SUCCESS", "errorstatus": "success", "result": []}));
+
+}
+
 // For a given project or project id and timeframe, return a list of members
 // for that project.
 // Query arguments:
@@ -725,5 +771,6 @@ exports.getProjectPages       = getProjectPages;
 exports.getActiveProjects     = getActiveProjects;
 exports.getActiveProjectPages = getActiveProjectPages;
 exports.getProjectMembers     = getProjectMembers;
+exports.getProjectUserLinks   = getProjectUserLinks;
 exports.getAnonCoords         = getAnonCoords;
 
